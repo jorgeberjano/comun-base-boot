@@ -28,27 +28,23 @@
                 <artifactId>maven-deploy-plugin</artifactId>
                 <version>3.0.0-M1</version>
             </plugin>
-            <!--
             <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>1.5.1</version>
-                <executions>
-                    <execution>
-                        <id>default-deploy</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <goals>
+                    <goal>compile</goal>
+                </goals>
                 <configuration>
-                    <serverId>nexus</serverId>
-                    <nexusUrl>http://centos.shsconsultores.es:8181/repository/</nexusUrl>
-                    <skipStaging>true</skipStaging>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.20</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
             </plugin>
-            -->
         </plugins>
     </build>
     <dependencies>
@@ -69,23 +65,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
-    <!--
-    <repositories>
-        <repository>
-            <id>shs-nexus-public</id>                 
-            <url>http://centos.shsconsultores.es:8181/repository/maven-public/</url>
-        </repository>
-    </repositories>
-    <distributionManagement>
-        <snapshotRepository>
-            <id>shs-nexus-snapshots</id>                 
-            <url>http://centos.shsconsultores.es:8181/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <repository>
-            <id>shs-nexus-releases</id>
-            <url>http://centos.shsconsultores.es:8181/repository/maven-releases/</url>
-        </repository>
-    </distributionManagement>
-    -->
+
 </project>
